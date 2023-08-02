@@ -7,7 +7,7 @@ pipeline {
     DOCKER_IMAGE_NGINX = "truongdinhtrongctim/built-nginx"
 
   }
-
+  stages {
     stage('Sonarqube') {
       agent { node {label 'master'}}
         environment {
