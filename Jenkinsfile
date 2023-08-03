@@ -9,21 +9,23 @@ pipeline {
   }
 
 
-  // stages {
-  //   stage('Sonarqube') {
-  //     agent { node {label 'master'}}
-  //       environment {
-  //           scannerHome = tool 'SonarQubeScanner'
-  //       }
-  //       steps {
-  //           withSonarQubeEnv('sonarqube') {
-  //               sh "${scannerHome}/bin/sonar-scanner"
-  //           }
-  //           timeout(time: 10, unit: 'MINUTES') {
-  //               waitForQualityGate abortPipeline: true
-  //           }
-  //       }
-  //   }
+  stages {
+
+
+    // stage('Sonarqube') {
+    //   agent { node {label 'master'}}
+    //     environment {
+    //         scannerHome = tool 'SonarQubeScanner'
+    //     }
+    //     steps {
+    //         withSonarQubeEnv('sonarqube') {
+    //             sh "${scannerHome}/bin/sonar-scanner"
+    //         }
+    //         timeout(time: 10, unit: 'MINUTES') {
+    //             waitForQualityGate abortPipeline: true
+    //         }
+    //     }
+    // }
   
     stage("build php-laravel") {
       agent { node {label 'master'}}
