@@ -3,8 +3,8 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE_PHP = "truongdinhtrongctim/php-web"
-    DOCKER_IMAGE_NGINX = "truongdinhtrongctim/built-nginx"
+    DOCKER_IMAGE_PHP = "truongdinhtrongctim/php-laravel"
+    DOCKER_IMAGE_NGINX = "truongdinhtrongctim/nginx-laravel"
 
   }
   stages {
@@ -23,7 +23,7 @@ pipeline {
         }
     }
   
-    stage("build php-web") {
+    stage("build php-laravel") {
       agent { node {label 'master'}}
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
@@ -45,7 +45,7 @@ pipeline {
       }
     }
 
-    stage("build nginx-web") {
+    stage("build nginx-laravel") {
       agent { node {label 'master'}}
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
