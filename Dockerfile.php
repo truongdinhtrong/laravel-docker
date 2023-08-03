@@ -6,7 +6,13 @@ RUN composer install
 
 FROM php:7.4.30-fpm-alpine3.16
 RUN docker-php-ext-install pdo pdo_mysql mysqli opcache
-RUN apk add --no-cache pcre-dev $PHPIZE_DEPS && pecl install redis && docker-php-ext-enable redis.so
+RUN apk --update add redis mysql-client nodejs npm
+RUN npm install mongo
+
+RUN apk update && apk add --no-cache autoconf g++ make libmemcached-dev zlib-dev
+RUN apk add --no-cache pcre-dev $PHPIZE_DEPS \
+    && pecl install redis mongodb memcached \
+    && docker-php-ext-enable redis.so mongodb.so memcached.so
 
 WORKDIR /var/www
 COPY . /var/www
