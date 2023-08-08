@@ -1,1 +1,6 @@
 check nginx
+
+
+check php-fpm
+
+
