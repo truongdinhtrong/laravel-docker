@@ -5,7 +5,6 @@ pipeline {
   environment {
     DOCKER_IMAGE_PHP = "truongdinhtrongctim/php-laravel"
     DOCKER_IMAGE_NGINX = "truongdinhtrongctim/nginx-laravel"
-
   }
 
 
